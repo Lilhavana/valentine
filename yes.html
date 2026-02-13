@@ -5,9 +5,53 @@
     <style>
         body {
             text-align: center;
-            font-family: Arial, sans-serif;
-            margin-top: 100px;
-            background-color: #ffb3d9;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 50px;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1, #fccb90);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1, h2 {
+            color: white;
+        }
+
+        #envelope {
+            font-size: 5rem;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        #envelope:hover {
+            transform: scale(1.2);
+        }
+
+        #letter {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid pink;
+            background: white;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -16,5 +60,26 @@
     <h1>I knew you'd say yes! 💕</h1>
     <h2>You just made me the happiest person 😭❤️</h2>
 
+    <div id="envelope">✉️<br><span style="font-size:20px;">Click me</span></div>
+
+    <div id="letter">
+        <h2>My Letter to You 💌</h2>
+        <p>
+            Dear [Her Name],<br><br>
+            From the moment I met you, my world has been brighter.  
+            You make every day feel special, and I just want you to know how much you mean to me.  
+            <br><br>
+            Happy Valentine’s Day 💖  
+            <br><br>
+            Yours always,<br>
+            Osim
+        </p>
+    </div>
+
+    <script>
+        document.getElementById("envelope").addEventListener("click", function() {
+            document.getElementById("letter").style.display = "block";
+        });
+    </script>
 </body>
 </html>

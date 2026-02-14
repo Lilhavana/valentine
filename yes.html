@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>You Said Yes!</title>
+    <!-- Handwritten font for the letter -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <style>
         body {
             text-align: center;
@@ -26,11 +28,12 @@
             font-size: 5rem;
             cursor: pointer;
             margin-top: 40px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
         }
 
         #envelope:hover {
             transform: scale(1.2);
+            text-shadow: 0 0 15px pink;
         }
 
         #letter {
@@ -43,15 +46,21 @@
             width: 60%;
             margin-left: auto;
             margin-right: auto;
-            font-size: 1.2rem;
-            line-height: 1.6;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            line-height: 1.8;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             animation: fadeIn 1s ease forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-100vh); opacity: 0; }
         }
     </style>
 </head>
@@ -65,20 +74,39 @@
     <div id="letter">
         <h2>My Letter to You 💌</h2>
         <p>
-            Dear [Her Name],<br><br>
-            From the moment I met you, my world has been brighter.  
-            You make every day feel special, and I just want you to know how much you mean to me.  
-            <br><br>
-            Happy Valentine’s Day 💖  
-            <br><br>
+            Dear Stella,<br><br> 
+            Admiring you has become a habit<br>
+            Steal my heart and I let you keep it<br>
+            There's always something to write about you<br>
+            I smile because I have someone as amazing as you<br><br>
+            Anyone could give me attention, but yours is all I want<br>
+            You are the flower that I've got to protect.<br><br>
+            From the moment I met you, my world has been brighter.<br>
+            You make every day feel special, and I just want you to know how much you mean to me.<br><br>
+            PS: Don't make it 25-1 abi 30-1<br><br>
+            Happy Valentine’s Day 💖<br><br>
             Yours always,<br>
-            Osim
+            Emmanuel
         </p>
     </div>
 
     <script>
         document.getElementById("envelope").addEventListener("click", function() {
             document.getElementById("letter").style.display = "block";
+
+            // Floating hearts (lightweight, only once)
+            for (let i = 0; i < 6; i++) {
+                const heart = document.createElement("div");
+                heart.textContent = "💖";
+                heart.style.position = "fixed";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.top = "100vh";
+                heart.style.fontSize = Math.random() * 20 + 20 + "px";
+                heart.style.animation = "float 4s linear forwards";
+                document.body.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 4000);
+            }
         });
     </script>
 </body>
